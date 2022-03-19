@@ -1,0 +1,12 @@
+.main {
+  display: flex;
+}
+.main__sidebar {
+  flex: 0.7;
+  height: 100;
+}
+.main__content {
+  height: 100%;
+  width: 100%;
+  flex: 3;
+}

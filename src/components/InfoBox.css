@@ -1,0 +1,27 @@
+.box {
+  display: flex;
+  flex-direction: row;
+  height: 120px;
+  width: 300px;
+  border-radius: 5px;
+  background-color: #2d3a4d;
+  justify-content: space-around;
+  align-items: center;
+  margin-right: 10px;
+  box-shadow: 1px 1px #aaaaaa;
+}
+.box__details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  padding-right: 30px;
+}
+#box-label {
+  font-size: 20px;
+  color: #eeeeee;
+}
+#box-stat {
+  font-size: 20px;
+  color: #eeeeee;
+}
