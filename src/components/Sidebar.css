@@ -1,6 +1,7 @@
 .sidebar {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   background-color: #042c5b;
   min-height: 100vh;
   min-width: 22vw;
@@ -21,6 +22,11 @@
   padding-bottom: 10px;
   padding-left: 30px;
   padding-right: 0px;
+}
+.vector {
+  align-self: flex-start;
+  margin-bottom: 30px;
+  margin-left: 30px;
 }
 
 .side-navigation-panel-select-option-text,
@@ -77,4 +83,7 @@
   background-color: black;
   border-color: black;
   color: rgba(31, 41, 55, var(--tw-text-opacity));
+}
+.side-navigation-panel-select-option-wrap > svg {
+  color: #042c5b;
 }

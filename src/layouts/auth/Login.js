@@ -6,16 +6,9 @@ import { fadeInUp } from "react-animations";
 
 import Radium, { StyleRoot } from "radium";
 
-const styles = {
-  shake: {
-    animation: "x 5s",
-    animationName: Radium.keyframes(fadeInUp, "bounce"),
-  },
-};
-
 const RegisterCard = (props) => {
   return (
-    <div className="login__container__card" style={styles.shake}>
+    <div className="login__container__card">
       <div className="card__box">
         <div className="card__field__container">
           <p id="label">Enter Name</p>
@@ -53,7 +46,7 @@ const RegisterCard = (props) => {
 };
 const LoginCard = (props) => {
   return (
-    <div className="login__container__card" style={styles.shake}>
+    <div className="login__container__card">
       <div className="card__box">
         <div className="card__field__container">
           <p id="label">Enter your email</p>

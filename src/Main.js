@@ -7,6 +7,7 @@ import VaccinationCenter from "./layouts/Centers/VaccinationCenter";
 import Dashboard from "./layouts/Dashboard";
 import HRCT from "./layouts/Prediction/HRCT/HRCT";
 import SymptomsAnalysis from "./layouts/Prediction/SymptomsAnalysis/SymptomsAnalysis";
+import XRAY from "./layouts/Prediction/XRAY/XRAY";
 
 function Main() {
   return (
@@ -19,6 +20,7 @@ function Main() {
         <Routes>
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="hrct" element={<HRCT />} />
+          <Route path="xray" element={<XRAY />} />
           <Route path="symptoms-analysis" element={<SymptomsAnalysis />} />
           <Route path="vaccination" element={<VaccinationCenter />} />
           <Route path="testing" element={<TestingCenter />} />

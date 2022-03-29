@@ -1,26 +1,17 @@
-.prediction {
+.hrct {
   display: flex;
   flex-direction: column;
-  min-height: 90vh;
+  min-height: 100vh;
   height: 100%;
   overflow: hidden;
 }
-.prediction__header {
+.hrct__header {
   padding: 20px;
 }
-.prediction__container {
+.image__container {
+  width: 70vw;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  margin-left: 30px;
-  margin-bottom: 30px;
-  height: 500px;
-  padding-top: 50px;
-  width: 50%;
-  border-radius: 10px;
-  border: 1px solid gray;
-  /* background-color: lightgray; */
-  /* background-color: #caf0f8; */
-  box-shadow: 1px 1px 1px #888888;
-  padding: 20px;
+  align-self: center;
+  justify-content: space-around;
 }

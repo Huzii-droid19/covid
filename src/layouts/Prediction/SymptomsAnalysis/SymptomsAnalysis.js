@@ -6,11 +6,13 @@ import Header from "../../../components/Header";
 function SymptomsAnalysis() {
   return (
     <div className="analysis">
-      <Header header_label="Symptoms Analysis" name="Nuts" />
+      <div className="analysis__header">
+        <Header header_label="Symptoms Analysis" name="Nuts" />
+      </div>
       <div className="analysis__container">
         <div className="analysis__container__col">
           <div className="analysis__container__col__row">
-            <h3 id="label">Oxygen Level</h3>
+            <h3 id="label">{`Oxygen\u00A0Level`}</h3>
             <select id="selection">
               <option>Normal</option>
               <option>Low</option>
@@ -29,11 +31,7 @@ function SymptomsAnalysis() {
         <div className="analysis__container__col">
           <div className="analysis__container__col__row">
             <h3 id="label">Fever</h3>
-            <input
-              type="number"
-              placeholder="Enter Fever °C"
-              id="input-fever"
-            />
+            <input type="number" placeholder="Enter Fever °C" id="input" />
           </div>
           <div className="analysis__container__col__row">
             <h3 id="label">Pneumonia</h3>

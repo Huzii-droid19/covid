@@ -9,11 +9,16 @@ function LandingPage() {
       style={{
         height: "100vh",
         width: "100vw",
-        display: "flex",
+        // display: "flex",
+        backgroundImage: `url("assets/xray-background.png")`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
       }}
     >
-      <img src="/assets/login-bg.png" alt="icon" />
-      <h1 onClick={() => navigate("login")}>Login</h1>
+      <h1 onClick={() => navigate("login")} style={{ cursor: "pointer" }}>
+        Click here
+      </h1>
     </div>
   );
 }
