@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./Centers.css";
-import GoogleMapReact from "google-map-react";
 import {
   GoogleMap,
   useLoadScript,
@@ -21,8 +20,8 @@ const center = {
 };
 
 function VaccinationCenter() {
-  const key = "AIzaSyACpo2r_kDjjUAJO2tRmxS-ahsQe1PsgIo";
-  const key1 = "AIzaSyDjvRB2R3fsmcmU_pXTHvhIKOTLyJ30wNQ";
+  // const key = "AIzaSyACpo2r_kDjjUAJO2tRmxS-ahsQe1PsgIo";
+  // const key1 = "AIzaSyDjvRB2R3fsmcmU_pXTHvhIKOTLyJ30wNQ";
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: "AIzaSyACpo2r_kDjjUAJO2tRmxS-ahsQe1PsgIo",

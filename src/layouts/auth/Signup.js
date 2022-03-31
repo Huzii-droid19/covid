@@ -1,23 +1,28 @@
-import React, { useState } from "react";
-import "./Login.css";
 import { Button } from "@mui/material";
+import React from "react";
 import { useNavigate } from "react-router-dom";
+import "./Login.css";
 
-function Login() {
+function Signup() {
   const navigate = useNavigate();
   return (
     <div className="login__container">
       <img src="/assets/icon.jpeg" alt="icon" id="icon-image" />
-      <h1>{"Login to your account"}</h1>
+      <h1>{"Register Account"}</h1>
+
       <div className="login__container__card">
         <div className="card__box">
           <div className="card__field__container">
-            <p id="label">Enter your email</p>
+            <p id="label">Enter Name</p>
+            <input type="text" required id="input" placeholder="Enter name" />
+          </div>
+          <div className="card__field__container">
+            <p id="label">Enter your email address</p>
             <input
               type="email"
               required
               id="input"
-              placeholder="Enter your email address"
+              placeholder="Enter your email"
             />
           </div>
           <div className="card__field__container">
@@ -29,22 +34,18 @@ function Login() {
               placeholder="Enter your password"
             />
           </div>
-          <p id="register" onClick={() => navigate("/signup")}>
-            Don't have an account? Register here
-          </p>
         </div>
         <Button
           variant="contained"
           color="primary"
-          id="button"
           size="large"
-          onClick={() => navigate("/main/dashboard")}
+          onClick={() => navigate("/login")}
         >
-          Login
+          Register
         </Button>
       </div>
     </div>
   );
 }
 
-export default Login;
+export default Signup;

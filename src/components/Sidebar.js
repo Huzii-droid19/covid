@@ -87,6 +87,12 @@ function Sidebar() {
 
         <div className="vector">
           <Button
+            style={{
+              color: "white",
+              // backgroundColor: "#21b6ae",
+
+              fontSize: "18px",
+            }}
             color="primary"
             size="large"
             onClick={() => navigate("/login")}
