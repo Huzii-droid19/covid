@@ -5,7 +5,7 @@ function InfoBox(props) {
   return (
     <>
       <div className="box">
-        <BsPerson size={30} color="#eeeeee" />
+        <BsPerson size={35} color="#eeeeee" />
         <div className="box__details">
           <strong>
             <p id="box-label">{props.label}</p>

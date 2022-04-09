@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import "./Login.css";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { login } from "../../api/user.api";
 
 function Login() {
   const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   return (
     <div className="login__container">
       <img src="/assets/icon.jpeg" alt="icon" id="icon-image" />
@@ -16,8 +19,10 @@ function Login() {
             <input
               type="email"
               required
-              id="input"
+              className="input"
+              value={email}
               placeholder="Enter your email address"
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div className="card__field__container">
@@ -25,8 +30,10 @@ function Login() {
             <input
               type="password"
               required
-              id="input"
+              className="input"
+              value={password}
               placeholder="Enter your password"
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
           <p id="register" onClick={() => navigate("/signup")}>
@@ -37,8 +44,10 @@ function Login() {
           variant="contained"
           color="primary"
           id="button"
-          size="large"
-          onClick={() => navigate("/main/dashboard")}
+          size="small"
+          onClick={() => {
+            login(email, password, navigate);
+          }}
         >
           Login
         </Button>

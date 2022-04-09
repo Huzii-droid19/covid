@@ -24,7 +24,7 @@ function LandingPage() {
         <div className="login__button">
           <Button
             color="primary"
-            size="large"
+            size="small"
             onClick={() => navigate("login")}
           >
             Login
@@ -32,7 +32,7 @@ function LandingPage() {
           <Button
             color="primary"
             variant="contained"
-            size="large"
+            size="small"
             onClick={() => navigate("signup")}
           >
             Sign Up

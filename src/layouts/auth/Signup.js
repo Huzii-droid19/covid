@@ -1,9 +1,13 @@
 import { Button } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
+import { signUp } from "../../api/user.api";
 
 function Signup() {
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
   const navigate = useNavigate();
   return (
     <div className="login__container">
@@ -14,14 +18,23 @@ function Signup() {
         <div className="card__box">
           <div className="card__field__container">
             <p id="label">Enter Name</p>
-            <input type="text" required id="input" placeholder="Enter name" />
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+              className="input"
+              placeholder="Enter name"
+            />
           </div>
           <div className="card__field__container">
             <p id="label">Enter your email address</p>
             <input
               type="email"
               required
-              id="input"
+              className="input"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
             />
           </div>
@@ -30,16 +43,19 @@ function Signup() {
             <input
               type="password"
               required
-              id="input"
+              className="input"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               placeholder="Enter your password"
             />
           </div>
         </div>
         <Button
+          id="button"
           variant="contained"
           color="primary"
-          size="large"
-          onClick={() => navigate("/login")}
+          size="small"
+          onClick={() => signUp(name, email, password, navigate)}
         >
           Register
         </Button>

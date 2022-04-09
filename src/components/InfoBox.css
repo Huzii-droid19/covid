@@ -1,8 +1,8 @@
 .box {
   display: flex;
   flex-direction: row;
-  height: 120px;
-  width: 300px;
+  height: 100px;
+  width: 220px;
   border-radius: 5px;
   background-color: #2d3a4d;
   justify-content: space-around;
@@ -18,10 +18,12 @@
   padding-right: 30px;
 }
 #box-label {
-  font-size: 20px;
+  font-size: 15px;
+  font-family: "poppins";
+  font-weight: semi-bold;
   color: #eeeeee;
 }
 #box-stat {
-  font-size: 20px;
+  font-size: 12px;
   color: #eeeeee;
 }

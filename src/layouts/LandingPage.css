@@ -27,7 +27,7 @@
   width: 20%;
 }
 #header {
-  font-size: 30px;
+  font-size: 25px;
   font-weight: bold;
   font-family: "poppins";
 }
@@ -52,14 +52,14 @@
   margin: 10px;
 }
 #feature-label {
-  font-size: 35px;
+  font-size: 25px;
   font-weight: bold;
   font-family: "poppins";
   margin: 10px;
   /* color: white; */
 }
 #feature-description {
-  font-size: 20px;
+  font-size: 15px;
   font-weight: normal;
   font-family: "poppins";
   margin: 5px;

@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Dashboard.css";
 import InfoBox from "../components/InfoBox";
 import LineChart from "../components/LineChart";
 import RootTable from "../components/RootTable";
 import Header from "../components/Header";
+import { getData } from "../api/data.api";
 function Dashboard() {
   const sx = {
     width: "90%",
@@ -31,6 +32,9 @@ function Dashboard() {
       stat: 232131243,
     },
   ];
+  useEffect(() => {
+    getData();
+  }, []);
   return (
     <>
       <div className="dashboard">
@@ -55,7 +59,7 @@ function Dashboard() {
           </div>
         </div>
 
-        <div className="dashboard__stat__row">
+        {/* <div className="dashboard__stat__row">
           <div className="dashboard__stat">
             <h2 id="label">World Data Stats</h2>
             <LineChart />
@@ -64,7 +68,7 @@ function Dashboard() {
             <h2 id="label">Country Wise Stats</h2>
             <RootTable sx={sx} columns={columns} rows={rows} />
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );
