@@ -100,19 +100,14 @@ function LineChart() {
   //     ],
   //   };
   const data = {
-    labels: [
-      "Eating",
-      "Drinking",
-      "Sleeping",
-      "Designing",
-      "Coding",
-      "Cycling",
-      "Running",
-    ],
+    labels: labels,
     datasets: [
       {
-        label: "My First Dataset",
-        data: [65, 59, 90, 81, 56, 55, 40],
+        label: "Total Cases",
+        data: [
+          65553, 53342, 94344, 83534, 56344, 53434, 44545, 76543, 53434, 53434,
+          88888,
+        ],
         fill: true,
         backgroundColor: "rgba(255, 99, 132, 0.2)",
         borderColor: "rgb(255, 99, 132)",
@@ -122,10 +117,25 @@ function LineChart() {
         pointHoverBorderColor: "rgb(255, 99, 132)",
       },
       {
-        label: "My Second Dataset",
-        data: [28, 48, 40, 19, 96, 27, 100],
+        label: "Deaths",
+        data: [
+          2823, 4824, 4024, 1924, 9642, 2744, 1044, 2424, 1424, 1424, 8888,
+        ],
         fill: true,
         backgroundColor: "rgba(54, 162, 235, 0.2)",
+        borderColor: "rgb(54, 162, 235)",
+        pointBackgroundColor: "rgb(54, 162, 235)",
+        pointBorderColor: "#fff",
+        pointHoverBackgroundColor: "#fff",
+        pointHoverBorderColor: "rgb(54, 162, 235)",
+      },
+      {
+        label: "Recovered",
+        data: [
+          28234, 48243, 4024, 1924, 96424, 27424, 10024, 2424, 1424, 1424, 8888,
+        ],
+        fill: true,
+        backgroundColor: "rgba(162, 54, 235, 0.2)",
         borderColor: "rgb(54, 162, 235)",
         pointBackgroundColor: "rgb(54, 162, 235)",
         pointBorderColor: "#fff",
@@ -141,7 +151,7 @@ function LineChart() {
         options={{
           maintainAspectRatio: true,
           responsive: true,
-          indexAxis: "y",
+          indexAxis: "x",
         }}
         style={{ height: "300px", width: "450px" }}
       />

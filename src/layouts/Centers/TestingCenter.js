@@ -7,6 +7,7 @@ import {
   InfoWindow,
 } from "@react-google-maps/api";
 import VaccineData from "./VaccineData";
+import { getTestingData } from "../../api/location.api";
 
 const libraries = ["places"];
 const mapContainerStyle = {
@@ -24,8 +25,9 @@ function TestingCenter() {
     googleMapsApiKey: "AIzaSyACpo2r_kDjjUAJO2tRmxS-ahsQe1PsgIo",
     libraries,
   });
-  const [markers, setMarkers] = useState(VaccineData);
+  const [markers, setMarkers] = useState([]);
   const [selected, setSelected] = useState(null);
+  const [initialCenter, setInitialCenter] = useState(center);
   // const onMapClick = React.useCallback((e) => {
   //   setMarkers([
   //     ...markers,
@@ -40,6 +42,16 @@ function TestingCenter() {
   const onMapLoad = React.useCallback((map) => {
     mapRef.current = map;
   }, []);
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      const { latitude, longitude } = position.coords;
+      setInitialCenter({
+        lat: latitude,
+        lng: longitude,
+      });
+    });
+    getTestingData(setMarkers);
+  }, []);
 
   if (loadError) return "Error loading maps";
   if (!isLoaded) return "Loading Maps";
@@ -53,9 +65,10 @@ function TestingCenter() {
       </h1>
 
       <GoogleMap
+        initialCenter={initialCenter}
         mapContainerStyle={mapContainerStyle}
-        zoom={16}
-        center={center}
+        zoom={13}
+        center={initialCenter}
         // onClick={onMapClick}
         onLoad={onMapLoad}
       >
