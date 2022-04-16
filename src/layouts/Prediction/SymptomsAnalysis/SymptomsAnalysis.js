@@ -26,6 +26,10 @@ function SymptomsAnalysis() {
               <option>No</option>
             </select>
           </div>
+          <div className="analysis__container__col__row">
+            <h3 id="label">BP (SYS)</h3>
+            <input type="number" placeholder="Enter Fever °C" id="input" />
+          </div>
         </div>
 
         <div className="analysis__container__col">
@@ -34,11 +38,14 @@ function SymptomsAnalysis() {
             <input type="number" placeholder="Enter Fever °C" id="input" />
           </div>
           <div className="analysis__container__col__row">
-            <h3 id="label">Pneumonia</h3>
-            <select id="selection">
-              <option>Yes</option>
-              <option>No</option>
-            </select>
+            <h3 id="label">Pulse rate</h3>
+
+            <input type="number" placeholder="Enter pulse rate" id="input" />
+          </div>
+          <div className="analysis__container__col__row">
+            <h3 id="label">BP (DIA)</h3>
+
+            <input type="number" placeholder="Enter pulse rate" id="input" />
           </div>
         </div>
       </div>
