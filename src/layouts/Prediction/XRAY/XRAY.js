@@ -5,6 +5,7 @@ import FileUploader from "../../../components/FileUploader";
 import "./XRAY.css";
 import ImageDisplay from "../../../components/ImageDisplay";
 import { useReactToPrint } from "react-to-print";
+import axios from "axios";
 
 function XRAY() {
   const [file, setFile] = useState(null);
@@ -12,6 +13,7 @@ function XRAY() {
   const [completed, setCompleted] = useState(0);
   const [show, setShow] = useState(false);
   const analyzedRef = useRef(null);
+  const [result, setResult] = useState("");
   const print = useReactToPrint({
     content: () => analyzedRef.current,
   });
@@ -34,16 +36,33 @@ function XRAY() {
       {show ? (
         <div className="image__container" ref={analyzedRef}>
           <ImageDisplay
-            file={
-              file ? URL.createObjectURL(file) : "assets/xray-backgroung.png"
+            file={file && URL.createObjectURL(file)}
+            filename={file && file.name}
+            button={
+              <Button
+                color="primary"
+                onClick={() => {
+                  const formData = new FormData();
+                  formData.append("file", file);
+                  axios
+                    .post("http://localhost:8080/api/predict/xray", formData)
+                    .then((res) => {
+                      setResult(res.data.prediction);
+                    })
+                    .catch((err) => {
+                      console.log(err);
+                    });
+                }}
+              >
+                Start Prediction
+              </Button>
             }
-            filename={file ? file.name : "unknown"}
-            button={<Button color="primary">Start Prediction</Button>}
           />
 
           <ImageDisplay
-            filename={file ? file.name : "unknown"}
-            file={"assets/xray-backgroung.png"}
+            filename={file && file.name}
+            file={file && URL.createObjectURL(file)}
+            result={result}
             button={
               <Button color="secondary" onClick={print}>
                 Print Report

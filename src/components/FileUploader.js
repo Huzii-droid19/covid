@@ -26,7 +26,7 @@ function FileUploader(props) {
   };
 
   const acceptStyle = {
-    backgroundColor: "rgb(154,220,255,0.2)",
+    backgroundColor: "rgb(154,220,255,0.5)",
     border: "3px dashed #4D77FF",
   };
 

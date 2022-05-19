@@ -1,17 +1,16 @@
-.xray {
+.container__card {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 90vh;
   height: 100%;
   overflow: hidden;
 }
-.xray__header {
-  /* padding: 20px; */
-}
-.image__container {
-  width: 70vw;
+.card__row {
+  width: 100%;
   display: flex;
   flex-direction: row;
-  align-self: center;
   justify-content: space-around;
+  align-items: center;
+  margin-left: 40px;
+  margin-right: 40px;
 }

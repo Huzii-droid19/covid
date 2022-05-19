@@ -18,10 +18,7 @@ function ImageDisplay(props) {
       ></div>
       <div className="image__info">
         <h3>{props.filename}</h3>
-        <p id="details">
-          image anwdiadioamdiamd oadimaodm iamdoiamdoia aoimdoiam oiadoa
-          moaimdoiamd oaoidmoamd
-        </p>
+        <p id="details">{props.result}</p>
       </div>
       {props.button}
     </div>

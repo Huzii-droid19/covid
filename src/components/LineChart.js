@@ -153,7 +153,7 @@ function LineChart() {
           responsive: true,
           indexAxis: "x",
         }}
-        style={{ height: "300px", width: "450px" }}
+        style={{ height: "350px", width: "450px" }}
       />
     </>
   );

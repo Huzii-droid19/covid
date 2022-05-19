@@ -43,6 +43,7 @@ function Sidebar() {
                 elemBefore: () => (
                   <MdOutlineOnlinePrediction size={20} color="white" />
                 ),
+                itemId: "/main/prediction",
                 subNav: [
                   {
                     title: "HRCT Prediction",
@@ -85,7 +86,7 @@ function Sidebar() {
           />
         </div>
 
-        <div className="vector">
+        {/* <div className="vector">
           <Button
             style={{
               color: "white",
@@ -99,7 +100,7 @@ function Sidebar() {
           >
             Logout
           </Button>
-        </div>
+        </div> */}
       </div>
     </>
   );

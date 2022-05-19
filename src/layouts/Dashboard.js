@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import "./Dashboard.css";
 import InfoBox from "../components/InfoBox";
 import LineChart from "../components/LineChart";
@@ -22,6 +22,7 @@ function Dashboard() {
       label: "Stats",
     },
   ];
+
   const rows = [
     {
       country: "Russia",
@@ -35,11 +36,12 @@ function Dashboard() {
   useEffect(() => {
     getData();
   }, []);
+
   return (
     <>
       <div className="dashboard">
         <div className="dashboard__banner">
-          <Header header_label="Dashboard" name="Nuts" />
+          <Header header_label="Dashboard" />
           <div className="dashboard__info__row">
             <InfoBox cases="23232423" label="Confirmed" />
             <InfoBox cases="23232423" label="Active" />

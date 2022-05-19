@@ -1,11 +1,10 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import Header from "../../../components/Header";
 import { Button } from "@mui/material";
 import FileUploader from "../../../components/FileUploader";
 import "./HRCT.css";
 import ImageDisplay from "../../../components/ImageDisplay";
 import { useReactToPrint } from "react-to-print";
-import * as tf from "@tensorflow/tfjs";
 
 function HRCT() {
   const [file, setFile] = useState(null);
@@ -13,20 +12,11 @@ function HRCT() {
   const [completed, setCompleted] = useState(0);
   const [show, setShow] = useState(false);
   const analyzedRef = useRef(null);
-  const [model, setModel] = useState(null);
+  const [result, setResult] = useState("");
   const print = useReactToPrint({
     content: () => analyzedRef.current,
   });
 
-  useEffect(() => {
-    tf.loadLayersModel("/assets/model/model.json")
-      .then((m) => {
-        setModel(m);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
   return (
     <div className="hrct">
       <div className="hrct__header">
@@ -46,16 +36,19 @@ function HRCT() {
       {show ? (
         <div className="image__container" ref={analyzedRef}>
           <ImageDisplay
-            file={
-              file ? URL.createObjectURL(file) : "assets/xray-backgroung.png"
+            file={file && URL.createObjectURL(file)}
+            filename={file && file.name}
+            button={
+              <Button color="primary" onClick={() => {}}>
+                Start Prediction
+              </Button>
             }
-            filename={file ? file.name : "unknown"}
-            button={<Button color="primary">Start Prediction</Button>}
           />
 
           <ImageDisplay
-            filename={file ? file.name : "unknown"}
-            file={"assets/xray-backgroung.png"}
+            filename={file && file.name}
+            file={file && URL.createObjectURL(file)}
+            result={result}
             button={
               <Button color="secondary" onClick={print}>
                 Print Report
@@ -69,7 +62,8 @@ function HRCT() {
           color="primary"
           onClick={() => {
             setShow(false);
-            console.log(model.predict(tf.zeros([1, 128, 128, 1])));
+            setResult("");
+            setFile(null);
           }}
         >
           Go back
