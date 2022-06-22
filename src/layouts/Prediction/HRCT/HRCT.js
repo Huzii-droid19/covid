@@ -4,7 +4,6 @@ import { Button } from "@mui/material";
 import FileUploader from "../../../components/FileUploader";
 import "./HRCT.css";
 import ImageDisplay from "../../../components/ImageDisplay";
-import { useReactToPrint } from "react-to-print";
 
 function HRCT() {
   const [file, setFile] = useState(null);
@@ -13,16 +12,13 @@ function HRCT() {
   const [show, setShow] = useState(false);
   const analyzedRef = useRef(null);
   const [result, setResult] = useState("");
-  const print = useReactToPrint({
-    content: () => analyzedRef.current,
-  });
 
   return (
     <div className="hrct">
       <div className="hrct__header">
         <Header header_label="HRCT Prediction" name="Nuts" />
       </div>
-      {!show ? (
+      {!show && (
         <FileUploader
           file={file}
           setFile={setFile}
@@ -32,8 +28,8 @@ function HRCT() {
           setCompleted={setCompleted}
           setShow={setShow}
         />
-      ) : null}
-      {show ? (
+      )}
+      {show && (
         <div className="image__container" ref={analyzedRef}>
           <ImageDisplay
             file={file && URL.createObjectURL(file)}
@@ -49,15 +45,11 @@ function HRCT() {
             filename={file && file.name}
             file={file && URL.createObjectURL(file)}
             result={result}
-            button={
-              <Button color="secondary" onClick={print}>
-                Print Report
-              </Button>
-            }
+            // button={<Button color="secondary">Print Report</Button>}
           />
         </div>
-      ) : null}
-      {show ? (
+      )}
+      {show && (
         <Button
           color="primary"
           onClick={() => {
@@ -68,7 +60,7 @@ function HRCT() {
         >
           Go back
         </Button>
-      ) : null}
+      )}
     </div>
   );
 }

@@ -39,15 +39,14 @@ function AlertModal(props) {
         <Fade in={props.open}>
           <Box sx={style}>
             <Typography id="transition-modal-title" variant="h6" component="h2">
-              Disclaimer
+              {props.label}
             </Typography>
             <Typography
               id="transition-modal-description"
               sx={{ mt: 2 }}
-              style={{ textAlign: "center" }}
+              style={{ textAlign: "center", fontSize: "1.5rem" }}
             >
-              This is research based project, we dont cliam any responsibility
-              for any data that we collect and any test we perform.
+              {props.result}
             </Typography>
             <Button
               style={{ marginTop: "10px" }}
@@ -55,7 +54,7 @@ function AlertModal(props) {
               variant="contained"
               onClick={() => props.setOpen(false)}
             >
-              I, Accept
+              {props.btnLabel}
             </Button>
           </Box>
         </Fade>

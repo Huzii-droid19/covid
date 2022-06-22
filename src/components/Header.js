@@ -30,11 +30,12 @@ function Header(props) {
         </IconButton>
         <p
           style={{
+            whiteSpace: "nowrap",
             marginLeft: "10px",
             marginRight: "10px",
           }}
         >
-          {Object.keys(user).length > 0 ? user.name : ""}
+          {user?.name}
         </p>
         <Menu
           id="basic-menu"

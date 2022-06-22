@@ -95,7 +95,14 @@ function LandingPage() {
           />
         </div>
       </div>
-      <AlertModal open={open} setOpen={setOpen} />
+      <AlertModal
+        open={open}
+        setOpen={setOpen}
+        label="Disclaimer"
+        result={` This is research based project, we dont cliam any responsibility
+              for any data that we collect and any test we perform`}
+        btnLabel="I, Accept"
+      />
     </div>
   );
 }

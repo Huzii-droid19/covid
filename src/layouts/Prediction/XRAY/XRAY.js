@@ -1,11 +1,10 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Header from "../../../components/Header";
 import { Button } from "@mui/material";
 import FileUploader from "../../../components/FileUploader";
 import "./XRAY.css";
 import ImageDisplay from "../../../components/ImageDisplay";
-import { useReactToPrint } from "react-to-print";
-import axios from "axios";
+import { checkCovidPredictionUsingXRAY } from "../../../api/prediction";
 
 function XRAY() {
   const [file, setFile] = useState(null);
@@ -13,16 +12,20 @@ function XRAY() {
   const [completed, setCompleted] = useState(0);
   const [show, setShow] = useState(false);
   const analyzedRef = useRef(null);
-  const [result, setResult] = useState("");
-  const print = useReactToPrint({
-    content: () => analyzedRef.current,
-  });
+  const [result, setResult] = useState();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handlePrediction = () => {
+    setIsLoading(true);
+    checkCovidPredictionUsingXRAY(file, setResult, setIsLoading);
+  };
+
   return (
     <div className="xray">
       <div className="xray__header">
         <Header header_label="XRAY Prediction" name="Nuts" />
       </div>
-      {!show ? (
+      {!show && (
         <FileUploader
           file={file}
           setFile={setFile}
@@ -32,50 +35,34 @@ function XRAY() {
           setCompleted={setCompleted}
           setShow={setShow}
         />
-      ) : null}
-      {show ? (
+      )}
+      {show && (
         <div className="image__container" ref={analyzedRef}>
           <ImageDisplay
+            label="Uploaded Image"
             file={file && URL.createObjectURL(file)}
-            filename={file && file.name}
+            filename={file?.name}
             button={
-              <Button
-                color="primary"
-                onClick={() => {
-                  const formData = new FormData();
-                  formData.append("file", file);
-                  axios
-                    .post("http://localhost:8080/api/predict/xray", formData)
-                    .then((res) => {
-                      setResult(res.data.prediction);
-                    })
-                    .catch((err) => {
-                      console.log(err);
-                    });
-                }}
-              >
+              <Button color="primary" onClick={handlePrediction}>
                 Start Prediction
               </Button>
             }
           />
-
           <ImageDisplay
-            filename={file && file.name}
-            file={file && URL.createObjectURL(file)}
-            result={result}
-            button={
-              <Button color="secondary" onClick={print}>
-                Print Report
-              </Button>
-            }
+            isLoading={isLoading}
+            label="Predicted Image"
+            filename={result?.prediction}
+            file={result?.image}
+            // result={result}
+            button={null}
           />
         </div>
-      ) : null}
-      {show ? (
+      )}
+      {show && (
         <Button color="primary" onClick={() => setShow(false)}>
           Go back
         </Button>
-      ) : null}
+      )}
     </div>
   );
 }

@@ -9,9 +9,10 @@
   /* padding: 20px; */
 }
 .image__container {
-  width: 70vw;
+  margin:50px;
   display: flex;
   flex-direction: row;
-  align-self: center;
-  justify-content: space-around;
+  align-self: flex-start;
+  justify-content: space-evenly;
+  padding:30px
 }

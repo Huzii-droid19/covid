@@ -2,22 +2,32 @@ import React, { useState, useEffect } from "react";
 import Header from "../../components/Header";
 import "./profile.css";
 import { getUser } from "../../api/user.api";
+import { getTestingRecords } from "../../api/prediction";
 import CircularProgress from "@mui/material/CircularProgress";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
-import TableFooter from "@mui/material/TableFooter";
-import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { TableHead, Divider } from "@mui/material";
 
 function Profile() {
   const [user, setUser] = useState({});
+  const [record, setRecord] = useState([]);
   useEffect(() => {
     getUser(setUser);
+    getTestingRecords(setRecord);
   }, []);
+  const style = {
+    fontSize: "1rem",
+    fontWeight: "bold",
+  };
+  const container = {
+    width: "100%",
+    maxHeight: "370px",
+    marginBottom: "40px",
+  };
   return (
     <div className="user__profile">
       <Header header_label="Profile" name="Nuts" />
@@ -58,25 +68,37 @@ function Profile() {
             <Divider />
             <div style={{ marginLeft: 20, marginRight: 20, paddingTop: 20 }}>
               <Paper sx={{ width: "100%", overflow: "hidden" }}>
-                <TableContainer sx={{ maxHeight: 440 }}>
+                <TableContainer sx={container}>
                   <Table stickyHeader aria-label="sticky table">
                     <TableHead>
                       <TableRow>
-                        <TableCell>Serial No</TableCell>
-                        <TableCell>Prediction Type</TableCell>
-                        <TableCell>Predicted Sample</TableCell>
-                        <TableCell>Result</TableCell>
+                        <TableCell style={style}>Serial No</TableCell>
+                        <TableCell style={style}>Prediction Type</TableCell>
+                        <TableCell style={style}>Predicted Sample</TableCell>
+                        <TableCell style={style}>Details</TableCell>
+                        <TableCell style={style}>Result</TableCell>
                       </TableRow>
                     </TableHead>
                     <TableBody>
-                      <TableRow>
-                        <TableCell>1</TableCell>
-                        <TableCell>HRCT</TableCell>
-                        <TableCell>
-                          <a href="#">See Anaylsis</a>
-                        </TableCell>
-                        <TableCell>Covid Infected</TableCell>
-                      </TableRow>
+                      {record.map((item, index) => (
+                        <TableRow key={index}>
+                          <TableCell>{index + 1}</TableCell>
+                          <TableCell>{item.type}</TableCell>
+                          <TableCell>
+                            <a
+                              href={item.sample}
+                              target="_blank"
+                              rel="noreferrer"
+                            >
+                              See Sample
+                            </a>
+                          </TableCell>
+                          <TableCell>{item.details}</TableCell>
+                          <TableCell>
+                            {item.result ? "Covid" : "Normal"}
+                          </TableCell>
+                        </TableRow>
+                      ))}
                     </TableBody>
                   </Table>
                 </TableContainer>

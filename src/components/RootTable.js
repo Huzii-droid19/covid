@@ -6,30 +6,35 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
+import { getCovidInfoByCountry } from "../api/data.api";
 
-function RootTable(props) {
+function RootTable({ sx }) {
+  const [covidInfo, setCovidInfo] = React.useState([]);
+  React.useEffect(() => getCovidInfoByCountry(setCovidInfo), []);
   return (
     <>
-      <Paper sx={props.sx}>
+      <Paper sx={sx}>
         <TableContainer sx={{ maxHeight: 400 }}>
           <Table stickyHeader aria-label="sticky table">
             <TableHead>
               <TableRow>
-                {props.columns.map((col, key) => {
-                  return <TableCell key={key}>{col.label}</TableCell>;
-                })}
+                <TableCell>Country</TableCell>
+                <TableCell align="right">Confirmed</TableCell>
+                <TableCell align="right">Recovered</TableCell>
+                <TableCell align="right">Deaths</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {props.rows.map((row, key) => {
-                return (
-                  <TableRow key={key}>
-                    {props.columns.map((col, k) => {
-                      return <TableCell key={k}>{row[col.id]}</TableCell>;
-                    })}
-                  </TableRow>
-                );
-              })}
+              {covidInfo?.map((row, key) => (
+                <TableRow key={key}>
+                  <TableCell component="th" scope="row">
+                    {row.country}
+                  </TableCell>
+                  <TableCell align="right">{row.cases}</TableCell>
+                  <TableCell align="right">{row.recovered}</TableCell>
+                  <TableCell align="right">{row.deaths}</TableCell>
+                </TableRow>
+              ))}
             </TableBody>
           </Table>
         </TableContainer>

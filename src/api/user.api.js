@@ -63,30 +63,47 @@ export const getUser = (setUser) => {
 };
 
 export const signUp = (name, email, password, navigate) => {
-  if (name.length > 0 && email.length > 0 && password.length > 0) {
-    if (email.match(mailformat)) {
-      axios
-        .post(`${BASE_URL}/user/signup/`, { name, email, password })
-        .then((res) => {
-          console.log(res.data);
-          if (res.data.status) {
-            toast.success(res.data.message);
-            localStorage.setItem("user", res.data.user);
-            localStorage.setItem("user-login", true);
-            navigate("/main/dashboard");
-          } else {
-            toast.error(res.data.message);
-          }
-        })
-        .catch((err) => {
-          if (err.response.status === 400) {
-            toast.error("User already exists");
-          }
-        });
-    } else {
-      toast.warning("Please provide a valid email address");
+  toast.promise(
+    new Promise((resolve, reject) => {
+      if (name.length > 0 && email.length > 0 && password.length > 0) {
+        if (email.match(mailformat)) {
+          axios
+            .post(`${BASE_URL}/user/signup/`, { name, email, password })
+            .then((res) => {
+              if (res.data.status) {
+                resolve(res.data.message);
+                localStorage.setItem("user_id", res.data.user.id);
+                localStorage.setItem("user-login", true);
+                navigate("/main/dashboard");
+              } else {
+                reject(res.data.message);
+              }
+            })
+            .catch((err) => {
+              if (err.response.status === 400) {
+                reject("User already exists");
+              }
+            });
+        } else {
+          reject("Please provide a valid email address");
+        }
+      } else {
+        reject("Please provide email and password");
+      }
+    }),
+    {
+      pending: "Logging In",
+      success: {
+        render({ data }) {
+          return data;
+        },
+        icon: "✔",
+      },
+      error: {
+        render({ data }) {
+          return data;
+        },
+      },
     }
-  } else {
-    toast.warning("Please provide email and password");
-  }
+  );
 };
