@@ -1,6 +1,7 @@
 import axios from "axios";
 import { toast } from "react-toastify";
 import { BASE_URL } from "./config";
+const PREDICTION_API_URL = "http://192.168.61.114:8080/api/predict";
 
 export const checkCovidPredictionUsingXRAY = async (
   image,
@@ -12,7 +13,7 @@ export const checkCovidPredictionUsingXRAY = async (
   toast.promise(
     new Promise((resolve, reject) => {
       axios
-        .post("http://localhost:8080/api/predict/xray", formData)
+        .post(`${PREDICTION_API_URL}/xray`, formData)
         .then((res) => {
           axios
             .post(`${BASE_URL}/records`, {
@@ -81,7 +82,7 @@ export const checkCovidPredictionUsingSymptoms = async (
   toast.promise(
     new Promise((resolve, reject) => {
       axios
-        .post("http://localhost:8080/api/predict/symptoms-analysis", data)
+        .post(`${PREDICTION_API_URL}/symptoms-analysis`, data)
         .then((res) => {
           axios
             .post(`${BASE_URL}/records`, {

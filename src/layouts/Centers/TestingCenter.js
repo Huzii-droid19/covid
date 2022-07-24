@@ -6,7 +6,6 @@ import {
   Marker,
   InfoWindow,
 } from "@react-google-maps/api";
-import VaccineData from "./VaccineData";
 import { getTestingData } from "../../api/location.api";
 
 const libraries = ["places"];
@@ -22,7 +21,7 @@ const center = {
 
 function TestingCenter() {
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: "AIzaSyACpo2r_kDjjUAJO2tRmxS-ahsQe1PsgIo",
+    googleMapsApiKey: "AIzaSyBGhpnx001UFKnjtSaC6c4PdjPe1O8doJ0",
     libraries,
   });
   const [markers, setMarkers] = useState([]);

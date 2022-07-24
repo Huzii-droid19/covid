@@ -24,7 +24,7 @@ function VaccinationCenter() {
   // const key1 = "AIzaSyDjvRB2R3fsmcmU_pXTHvhIKOTLyJ30wNQ";
 
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: "AIzaSyACpo2r_kDjjUAJO2tRmxS-ahsQe1PsgIo",
+    googleMapsApiKey: "AIzaSyBGhpnx001UFKnjtSaC6c4PdjPe1O8doJ0",
     libraries,
   });
   const [markers, setMarkers] = useState([]);
